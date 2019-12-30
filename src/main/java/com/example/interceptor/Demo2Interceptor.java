@@ -2,6 +2,7 @@ package com.example.interceptor;
 
 import com.github.gaojh.mvc.annotation.Interceptor;
 import com.github.gaojh.mvc.interceptor.HandlerInterceptor;
+import com.github.gaojh.mvc.interceptor.HandlerResponse;
 import com.github.gaojh.server.http.HttpRequest;
 import com.github.gaojh.server.http.HttpResponse;
 import org.slf4j.Logger;
@@ -14,10 +15,10 @@ import org.slf4j.LoggerFactory;
 @Interceptor(pathPatterns = {"/demo"},order = 6)
 public class Demo2Interceptor implements HandlerInterceptor {
     private static Logger logger = LoggerFactory.getLogger(Demo2Interceptor.class);
+
     @Override
-    public boolean preHandle(HttpRequest httpRequest, HttpResponse httpResponse) throws Exception {
-        logger.info("demo2");
-        return true;
+    public HandlerResponse preHandle(HttpRequest httpRequest, HttpResponse httpResponse) throws Exception {
+        return HandlerResponse.success();
     }
 
     @Override
@@ -25,8 +26,4 @@ public class Demo2Interceptor implements HandlerInterceptor {
         logger.info("demo2 postHandle");
     }
 
-    @Override
-    public void afterCompletion(HttpRequest httpRequest, HttpResponse httpResponse) throws Exception {
-        logger.info("demo2 afterCompletion");
-    }
 }

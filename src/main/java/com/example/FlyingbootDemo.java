@@ -9,6 +9,6 @@ import com.github.gaojh.ioc.annotation.ComponentScan;
  */
 public class FlyingbootDemo {
     public static void main(String[] args) {
-        Flying.run(FlyingbootDemo.class);
+        new Flying().port(11111).enableWebsocket(true).run(FlyingbootDemo.class);
     }
 }
